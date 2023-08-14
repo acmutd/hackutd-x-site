@@ -40,7 +40,8 @@ export default function AnsweredQuestion({
         {({ open }) => (
           <div className="w-full">
             <div className="flex flex-row items-center gap-x-2">
-              <CheckCircleFilled style={{ color: iconColorCode }} />
+              {/* Property rev is to make Typescript happy */}
+              <CheckCircleFilled rev={undefined} style={{ color: iconColorCode }} />
               <Disclosure.Button className="w-full" as="div">
                 <button
                   className="w-full"
