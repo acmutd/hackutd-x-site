@@ -36,6 +36,7 @@ yarn-error.log*
 .vercel
 
 .eslintcache
+.env
 
 # Ignores automatically-generated workbox files for next-pwa
 public/sw.*
