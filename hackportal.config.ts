@@ -371,6 +371,23 @@ export const hackPortalConfig: HackPortalConfig = {
               },
             ],
           },
+          {
+            question: 'Are you interested in travel reimbursement?',
+            required: true,
+            id: 'travel_reimbursement',
+            name: 'travel_reimbursement',
+            initialValue: 'no',
+            options: [
+              {
+                title: 'Yes',
+                value: 'yes',
+              },
+              {
+                title: 'No',
+                value: 'no',
+              },
+            ],
+          },
         ],
       },
       {
