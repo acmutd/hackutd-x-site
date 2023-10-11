@@ -17,7 +17,7 @@ export default function HomeSponsors() {
         <a
           href={'https://www.goldmansachs.com/careers/our-firm/engineering/index.html'}
           target="_blank"
-          className="relative w-40 h-40 md:mt-6  md:mx-0 mx-8"
+          className="relative w-48 h-48 md:mt-6  md:mx-0 mx-8"
           rel="noreferrer"
         >
           <Image
@@ -30,7 +30,7 @@ export default function HomeSponsors() {
         <a
           href={'https://careers.toyota.com/us/en'}
           target="_blank"
-          className="relative w-52 h-32"
+          className="relative w-60 h-40"
           rel="noreferrer"
         >
           <Image
@@ -93,6 +93,34 @@ export default function HomeSponsors() {
           />
         </a>
         <a
+          href={'https://www.fanniemae.com/careers'}
+          target="_blank"
+          className="relative w-96 h-40"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/FannieMae.png'}
+            alt="FannieMae"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
+          href={
+            'https://careers.jpmorgan.com/us/en/students/programs?search=&tags=location__Americas__UnitedStatesofAmerica'
+          }
+          target="_blank"
+          className="relative w-72 h-36"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/JPMorgan.png'}
+            alt="JPMorgan"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
           href={'https://geico.wd1.myworkdayjobs.com/External'}
           target="_blank"
           className="relative w-80 h-28"
@@ -121,7 +149,7 @@ export default function HomeSponsors() {
         <a
           href={'https://www.corelogic.com/culture/'}
           target="_blank"
-          className="relative w-[24rem] h-20"
+          className="relative w-[24rem] h-28"
           rel="noreferrer"
         >
           <Image
@@ -134,7 +162,7 @@ export default function HomeSponsors() {
       </section>
       <div className="flex justify-center 2xl:mt-20 md:mt-10 2xl:mb-0 md:mb-5">
         <h4 className="text-center gold-text-gradient font-bold 2xl:text-4xl md:text-3xl text-2xl my-4">
-          Special thanks to
+          SPECIAL THANKS TO
         </h4>
       </div>
       <section className="flex flex-wrap justify-center items-center sm:space-y-0 > * + * space-y-6 > * + * p-4 2xl:space-x-12 > * + * md:space-x-6 > * + * sm:space-x-3 > * + *">
