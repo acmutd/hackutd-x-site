@@ -12,9 +12,5 @@
   },
   "forwardPorts": [
     3000
-  ],
-  "runArgs": [
-    "--env-file",
-    "${localWorkspaceFolder}/.env.local"
   ]
 }
