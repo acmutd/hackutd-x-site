@@ -4,7 +4,6 @@ import DashboardHeader from '../../components/dashboardComponents/DashboardHeade
 import { useUser } from '../../lib/profile/user-data';
 import { useAuthContext } from '../../lib/user/AuthContext';
 import AnnouncementCard from '../../components/dashboardComponents/AnnouncementCards';
-import Sidebar from '../../components/dashboardComponents/Sidebar';
 import firebase from 'firebase';
 import 'firebase/messaging';
 import { GetServerSideProps } from 'next';
@@ -12,13 +11,6 @@ import { RequestHelper } from '../../lib/request-helper';
 import { useFCMContext } from '../../lib/service-worker/FCMContext';
 import SpotlightCard from '../../components/dashboardComponents/SpotlightCard';
 import ChallengeCard from '../../components/dashboardComponents/ChallengeCard';
-
-import { Navigation, Pagination, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 /**
  * The dashboard / hack center.
@@ -31,7 +23,6 @@ import 'swiper/css/scrollbar';
 export default function Dashboard(props: {
   announcements: Announcement[];
   scheduleEvents: ScheduleEvent[];
-  challenges: Challenge[];
 }) {
   return (
     <div className="flex flex-col flex-grow text-2xl text-primary text-center pt-4">
@@ -45,12 +36,10 @@ export default function Dashboard(props: {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [dateTime, setdateTime] = useState(new Date());
   const [eventCount, setEventCount] = useState(0);
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
 
   useEffect(() => {
     setAnnouncements(props.announcements);
     // ordering challenges as speficied in firebase
-    setChallenges(props.challenges.sort((a, b) => (a.rank > b.rank ? 1 : -1)));
     if (firebase.messaging.isSupported()) {
       firebase.messaging().onMessage((payload) => {
         setAnnouncements((prev) => [
@@ -149,20 +138,6 @@ export default function Dashboard(props: {
               </div>
             </div>
           </div>
-
-          {/* Challenges */}
-          <h1 className="md:text-5xl text-3xl font-black text-[#FFFCF9] hoefler-text mb-4 2xl:mt-28 md:mt-20">
-            Challenges
-          </h1>
-
-          <div className="flex flex-col items-center">
-            {/* Cards */}
-            <div className="challengeGrid">
-              {challenges.map(({ title, description, prizes }, idx) => (
-                <ChallengeCard key={idx} title={title} description={description} prizes={prizes} />
-              ))}
-            </div>
-          </div>
         </section>
       </div>
     </>
@@ -179,16 +154,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${protocol}://${context.req.headers.host}/api/schedule/`,
     {},
   );
-  const { data: challengeData } = await RequestHelper.get<Challenge[]>(
-    `${protocol}://${context.req.headers.host}/api/challenges/`,
-    {},
-  );
 
   return {
     props: {
       announcements: announcementData,
       scheduleEvents: eventData,
-      challenges: challengeData,
     },
   };
 };

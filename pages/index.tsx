@@ -7,7 +7,7 @@ import HomeNotif from '../components/homeComponents/HomeNotif';
 import HomeVideoStats from '../components/homeComponents/HomeVideoStats';
 import HomeAbout from '../components/homeComponents/HomeAbout';
 import HomeSpeakers from '../components/homeComponents/HomeSpeakers';
-// import HomeChallenges from '../components/homeComponents/HomeChallenges';
+import HomeChallenges from '../components/homeComponents/HomeChallenges';
 // import HomeTeam from '../components/homeComponents/HomeTeam';
 import HomeSponsors from '../components/homeComponents/HomeSponsors';
 import HomeFooter from '../components/homeComponents/HomeFooter';
@@ -21,7 +21,6 @@ import HomeFaq from '../components/homeComponents/HomeFaq';
  */
 export default function Home(props: {
   keynoteSpeakers: KeynoteSpeaker[];
-  challenges: Challenge[];
   answeredQuestion: AnsweredQuestion[];
   fetchedMembers: TeamMember[];
 }) {
@@ -54,8 +53,8 @@ export default function Home(props: {
         <HomeAbout />
         <HomeVideoStats />
         <HomeSpeakers keynoteSpeakers={props.keynoteSpeakers} />
+        <HomeChallenges />
         <HomeFaq answeredQuestion={props.answeredQuestion} />
-        {/* <HomeChallenges challenges={props.challenges} /> */}
         {/* <HomeTeam members={props.fetchedMembers} /> */}
       </div>
       <div className="bg-[url('/assets/hero-bg.png')]">
@@ -72,10 +71,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `${protocol}://${context.req.headers.host}/api/keynotespeakers`,
     {},
   );
-  const { data: challengeData } = await RequestHelper.get<Challenge[]>(
-    `${protocol}://${context.req.headers.host}/api/challenges/`,
-    {},
-  );
   const { data: answeredQuestion } = await RequestHelper.get<AnsweredQuestion[]>(
     `${protocol}://${context.req.headers.host}/api/questions/faq`,
     {},
@@ -87,7 +82,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       keynoteSpeakers: keynoteData,
-      challenges: challengeData,
       answeredQuestion: answeredQuestion,
       fetchedMembers: memberData,
     },

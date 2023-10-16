@@ -1,144 +1,86 @@
-import { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Navigation, Pagination } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
 import HomeChallengeCard from './HomeChallengeCard';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 
 // This section is hidden if there are no challenges
-export default function HomeChallenges(props: { challenges: Challenge[] }) {
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
-  const [challengeIdx, setChallengeIdx] = useState(null);
-  const [challengeData, setChallengeData] = useState({
-    title: '',
-    organization: '',
-    description: '',
-    prizes: [],
-  });
-  const [showChallengeCard, setShowChallengeCard] = useState(false);
-
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  useEffect(() => {
-    // Organize challenges in order by rank given in firebase
-    const sortedChallenges = props.challenges.sort((a, b) => (a.rank > b.rank ? 1 : -1));
-
-    if (sortedChallenges.length != 0) {
-      setChallenges(sortedChallenges);
-      setChallengeData({
-        title: sortedChallenges[0].title,
-        organization: sortedChallenges[0].organization,
-        description: sortedChallenges[0].description,
-        prizes: sortedChallenges[0].prizes,
-      });
-    }
-  }, []);
-
-  const changeOrg = (challenge, newIdx) => {
-    setShowChallengeCard(true);
-
-    setChallengeIdx(newIdx);
-    setChallengeData({
-      title: challenge.title,
-      organization: challenge.organization,
-      description: challenge.description,
-      prizes: challenge.prizes,
-    });
-  };
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+export default function HomeChallenges() {
   return (
-    challenges.length != 0 && (
-      <section className="md:py-12 py-6 xl:w-9/10 w-11/12 m-auto">
-        <div className="font-bold md:text-4xl text-2xl my-4 text-complementary">Challenges</div>
-        {/* Challenge Orgs Selectors*/}
-        <div className="relative mt-4 sm:w-[95%] w-[85%] mx-auto">
-          <Swiper
-            modules={[Navigation, A11y, Pagination]}
-            spaceBetween={10}
-            allowTouchMove={false}
-            // navigation
-            navigation={{
-              prevEl: '.swiper-button-prev',
-              nextEl: '.swiper-button-next',
-            }}
-            pagination={{
-              el: '.swiper-pagination',
-              type: 'bullets',
-            }}
-            // Responsive breakpoints
-            breakpoints={{
-              // when window width is >= 0px
-              0: {
-                slidesPerView: 2,
-              },
-              // when window width is >= 768px
-              768: {
-                spaceBetween: 30,
-                slidesPerView: 3,
-              },
-              // when window width is >= 1536px
-              1290: {
-                spaceBetween: 50,
-                slidesPerView: 4,
-              },
-            }}
-          >
-            {challenges.map((challenge, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="w-full h-full items-center justify-center flex">
-                  <div
-                    id={`org${idx}`}
-                    className={`${idx} font-bold text-primaryDark p-5 flex align-bottom flex-col items-start justify-end z-10 relative cursor-pointer text-left text-xl w-[22rem] 2xl:w-full sm:h-[16rem] h-[14rem] ${
-                      idx == challengeIdx ? 'bg-primary/50' : 'bg-secondary'
-                    } rounded-lg`}
-                    key={idx}
-                    onClick={() => changeOrg(challenge, idx)}
-                  >
-                    {challenge.organization}
-                    <button className=" text-primaryDark rounded-lg mt-1 text-xs">
-                      Learn more
-                    </button>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="-translate-x-12 -translate-y-32">
-            <div className="swiper-button-prev" />
+    <section className="md:py-12 py-2 2xl:w-3/5 w-4/5 mx-auto text-secondaryDark">
+      <div className="text-center font-bold lg:text-5xl md:text-3xl text-2xl my-4 mb-8 xl:mb-12 2xl:mb-16">
+        CHALLENGES
+      </div>
+      {/* Main challenge card */}
+      <div className="border-2 border-secondaryDark p-[2px] hoefler-text">
+        <div className="border-2 border-secondaryDark 2xl:py-12 py-8 2xl:px-32 xl:px-24 md:px-12 px-10">
+          <div className="2xl:text-4xl text-3xl text-center font-semibold">Grand Prizes</div>
+          <p className="sm:my-6 my-3 xl:text-lg">
+            This will be a description of how we judge grand prizing as well as any requirements.
+            blah blah balh blah blah blah blah.
+          </p>
+          <p className="text-xl font-semibold">Judging Criteria</p>
+          <p className="xl:text-lg mt-2">
+            Here, we can talk about the various factors that we might consider in grand prizing. Idk
+            how long it would be se you can ask experience about it or something. Here, we can talk
+            about the various factors that we might consider in grand prizing. Idk how long it would
+            be se you can ask experience about it or something. Here, we can talk about the various
+            factors that we might consider in grand prizing. Idk how long it would be se you can ask
+            experience about it or something.
+          </p>
+          <div className="hidden sm:flex w-full justify-between mt-10 md:text-base text-sm">
+            <div className="flex flex-col items-center grow">
+              <div className="md:text-xl text-lg font-semibold">1st Place Prize</div>
+              <div>MacBook Pro</div>
+              <div> &#40;1 per team member&#41;</div>
+            </div>
+            <div className="flex flex-col items-center grow">
+              <div className="md:text-xl text-lg font-semibold">2nd Place Prize</div>
+              <div>iPad Air</div>
+              <div> &#40;1 per team member&#41;</div>
+            </div>
+            <div className="flex flex-col items-center grow">
+              <div className="md:text-xl text-lg font-semibold">3rd Place Prize</div>
+              <div>iPhone 15</div>
+              <div> &#40;1 per team member&#41;</div>
+            </div>
           </div>
-          <div className="translate-x-12 -translate-y-32">
-            <div className="swiper-button-next" />
-          </div>
-          {/* Challenges Description Cards */}
-          <div className="my-4">
-            {showChallengeCard && (
-              <HomeChallengeCard
-                title={challengeData.title}
-                organization={challengeData.organization}
-                description={challengeData.description}
-                prizes={challengeData.prizes}
-              />
-            )}
-          </div>
-          <div className="block md:hidden translate-y-8">
-            <div className="swiper-pagination"></div>
+          <div className="sm:hidden block mt-8">
+            <ul className="leading-snug">
+              <li>1st: MacBook &#40;1 per team member&#41;</li>
+              <li>2nd: iPad Air &#40;1 per team member&#41;</li>
+              <li>3rd: iPhone 15 &#40;1 per team member&#41;</li>
+            </ul>
           </div>
         </div>
-      </section>
-    )
+      </div>
+      {/* Sponsor challenges */}
+      <div className="flex flex-wrap justify-between">
+        <HomeChallengeCard
+          sponsor="Goldman Sachs"
+          challengeName="Goldman Sachs Challenge"
+          prizes={['Macbook Air', 'iPad Air', 'iPhone 15']}
+          sponsorSummary="Goldman Sachs Goldman Sachs Goldman Sachs Goldman Sachs Goldman Sachs Goldman Sachs Goldman Sachs"
+          challengeStatement="This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. This is the Goldman Sachs challenge. "
+        />
+        <HomeChallengeCard
+          sponsor="Toyota"
+          challengeName="Toyota Challenge"
+          prizes={['Macbook Air', 'iPad Air', 'iPhone 15']}
+          sponsorSummary="Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota Toyota"
+          challengeStatement="This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. This is the Toyota Challenge. "
+        />
+        <HomeChallengeCard
+          sponsor="Fidelity"
+          challengeName="Fidelity Challenge"
+          prizes={['Macbook Air', 'iPad Air', 'iPhone 15']}
+          sponsorSummary="Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity Fidelity"
+          challengeStatement="This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. This is the Fidelity Challenge. "
+        />
+        <HomeChallengeCard
+          sponsor="StateFarm"
+          challengeName="StateFarm Challenge"
+          prizes={['Macbook Air', 'iPad Air', 'iPhone 15']}
+          sponsorSummary="StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm StateFarm"
+          challengeStatement="This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. This is the StateFarm Challenge. "
+        />
+      </div>
+    </section>
   );
 }
