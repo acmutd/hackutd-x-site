@@ -55,7 +55,7 @@ function HomeChallengeCard(props: challengeProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/[.3]" />
+            <div className="fixed inset-0 bg-secondaryDark/[.5] backdrop-blur-sm"></div>
           </Transition.Child>
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
@@ -69,8 +69,8 @@ function HomeChallengeCard(props: challengeProps) {
                 leaveTo="opacity-0 scale-95"
               >
                 {/* Popup card(panel) */}
-                <Dialog.Panel className="w-full 2xl:max-w-[55%] md:max-w-[70%] max-w-[90%] transform overflow-hidden bg-[url('/assets/about-bg.jpeg')] border-2 border-secondaryDark p-[2px] text-left align-middle shadow-xl transition-all hoefler-text text-secondaryDark">
-                  <div className="border-2 border-secondaryDark px-8 pt-8 pb-6">
+                <Dialog.Panel className="w-full 2xl:max-w-[55%] md:max-w-[70%] max-w-[90%] transform overflow-hidden bg-[url('/assets/hero-bg.png')] text-primary border-2 border-primary p-[2px] text-left align-middle shadow-xl transition-all hoefler-text">
+                  <div className="border-2 border-primary px-8 pt-8 pb-6">
                     <Dialog.Title
                       as="h3"
                       className="md:text-3xl text-xl font-bold leading-6 text-center"
