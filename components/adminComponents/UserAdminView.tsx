@@ -32,6 +32,9 @@ export default function UserAdminView({
     return false;
   });
 
+  // Contains info of the user who is viewing the data
+  const { user: organizer } = useAuthContext();
+
   const user_info = [
     ['Major', currentUser.major],
     ['University', currentUser.university],
@@ -43,7 +46,9 @@ export default function UserAdminView({
     ['What are you looking forward to at HackUTD X?', currentUser.excitedFor],
     [
       'Resume',
-      currentUser.resume === '' || currentUser.resume === undefined ? (
+      currentUser.resume === '' ||
+      currentUser.resume === undefined ||
+      organizer.permissions[0] !== 'super_admin' ? (
         'No resume found'
       ) : (
         <Link passHref href={currentUser.resume} className="border-2 p-3 hover:bg-gray-200">
@@ -65,9 +70,6 @@ export default function UserAdminView({
   const [errors, setErrors] = useState<string[]>([]);
   const [isInEditMode, setIsInEditMode] = useState(false);
 
-  // Contains info of the user who is viewing the data
-  const { user: organizer } = useAuthContext();
-
   useEffect(() => {
     const handleResize = () => setWindowHeight(window.innerHeight);
     window.addEventListener('resize', handleResize);
@@ -79,6 +81,12 @@ export default function UserAdminView({
     setHeight(h);
     setCurrentPage(Math.floor(currentUserIndex / Math.floor(h / 60) + 1));
     console.log(h, currentUserIndex);
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        goBack();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
   }, [windowHeight, currentUserIndex]);
 
   const updateRole = async () => {
@@ -141,9 +149,11 @@ export default function UserAdminView({
               `}
               onClick={() => onUserClick(user.id)}
             >
-              <div className="text-primary text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%]">
-                {user.user.firstName}
-              </div>
+              {organizer.permissions[0] === 'super_admin' && (
+                <div className="text-primary text-lg font-bold whitespace-nowrap overflow-hidden text-ellipsis max-w-[60%]">
+                  {user.user.firstName}
+                </div>
+              )}
               <div
                 className={`py-0.6 px-6 rounded-md  ${
                   user.status === 'Accepted' ? 'text-[#409019] bg-[#84DF58]/25' : ''
@@ -186,9 +196,11 @@ export default function UserAdminView({
 
         {/* User Info */}
         <div className="p-10 animate-text bg-gradient-to-r from-primaryDark to-primary bg-clip-text text-transparent h-full">
-          <h1 className="font-bold text-5xl">
-            {currentUser.user.firstName} {currentUser.user.lastName}
-          </h1>
+          {organizer.permissions[0] === 'super_admin' && (
+            <h1 className="font-bold text-5xl">
+              {currentUser.user.firstName} {currentUser.user.lastName}
+            </h1>
+          )}
 
           {/* User Status */}
           <div className="mt-4">
@@ -237,7 +249,7 @@ export default function UserAdminView({
                           setNewRole(e.target.value);
                         }}
                         name="new_role"
-                        className="border-2 rounded-xl p-2"
+                        className="mt-2 rounded-md border-2 border-primary p-2 bg-secondaryDark text-primary"
                       >
                         <option value="" disabled>
                           Choose a role

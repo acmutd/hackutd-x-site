@@ -40,7 +40,9 @@ export default function QRCodeReader({ callback, width, height }: QRCodeReaderPr
       if (!canvasElement) return requestAnimationFrame(tick);
       canvasElement.width = video.videoWidth;
       canvasElement.height = video.videoHeight;
-      const context = canvasElement.getContext('2d');
+      const context = canvasElement.getContext('2d', {
+        willReadFrequently: true,
+      });
       context.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
       const imageData = context.getImageData(0, 0, canvasElement.width, canvasElement.height);
       var qrCode = jsQR(imageData.data, imageData.width, imageData.height, {
@@ -68,7 +70,8 @@ export default function QRCodeReader({ callback, width, height }: QRCodeReaderPr
         video.srcObject = stream;
         video.play();
         requestAnimationFrame(tick);
-      });
+      })
+      .catch((err) => console.error(err));
   return (
     <div className="flex items-center justify-center">
       {videoReady && !paused ? <canvas ref={canvas} /> : <LoadIcon width={width} height={height} />}
