@@ -84,7 +84,7 @@ export default function Dashboard(props: {
           <meta name="description" content="HackUTD X's Dashboard" />
         </Head>
 
-        <section id="mainContent" className="2xl:px-32 md:px-16 px-6">
+        <section id="mainContent" className="2xl:px-32 md:px-16 px-6 w-full">
           <DashboardHeader />
           {/* Spotlight & Announcements */}
           <div className="flex flex-wrap justify-between  md:my-16 my-10 hoefler-text">
