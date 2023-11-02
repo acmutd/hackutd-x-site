@@ -30,9 +30,15 @@ function HomeChallengeCard(props: challengeProps) {
             {props.challengeName}
           </div>
           <ul className="leading-snug mb-12">
-            <li>1st: {props.prizes[0]} &#40;1 per team member&#41;</li>
+            <li>
+              1st: {props.prizes[0]} &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'} per team
+              member&#41;
+            </li>
             {props.prizes.length >= 2 && (
-              <li>2nd: {props.prizes[1]} &#40;1 per team member&#41;</li>
+              <li>
+                2nd: {props.prizes[1]} &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'} per team
+                member&#41;
+              </li>
             )}
             {props.prizes.length >= 3 && (
               <li>3rd: {props.prizes[2]} &#40;1 per team member&#41;</li>
@@ -105,22 +111,101 @@ function HomeChallengeCard(props: challengeProps) {
                           https://frontier-careers.com/
                         </a>
                       )}
+                      {props.sponsor == 'CBRE' && (
+                        <a
+                          className="underline"
+                          href="https://careers.cbre.com/en_US/careers/JobDetail/Digital-Technology-Intern-Summer-2024-Richardson-TX/135583"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          https://careers.cbre.com/en_US/careers/JobDetail/Digital-Technology-Intern-Summer-2024-Richardson-TX/135583
+                        </a>
+                      )}
                     </p>
                     <p className="md:text-xl text-lg font-semibold">{props.challengeName}</p>
                     <p className="2xl:text-lg md:text-base text-sm mt-2 whitespace-pre-line">
                       {description}
+                      {props.sponsor == 'PRHI' && (
+                        <a
+                          className="underline"
+                          href="https://www.patientsafetytech.com/patient-safety"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          here
+                        </a>
+                      )}
+                      {props.sponsor == 'CBRE' && (
+                        <a
+                          className="underline"
+                          href="https://drive.google.com/file/d/1ffaJrf-1jczoB0I1CE6cVr-mAaz_ZX4E/view"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          here
+                        </a>
+                      )}
+                      {props.sponsor == 'Fannie Mae' && (
+                        <div>
+                          View the dataset&thinsp;
+                          <a
+                            className="underline"
+                            href="https://www.google.com/url?q=https://drive.google.com/file/d/1YiFLC6L1EBtbgGZUUR0170JtHx8OYGdr/view?usp%3Ddrive_link&sa=D&source=editors&ust=1698775434301441&usg=AOvVaw1qPjfUk1mlDcMsDdNOvtBq"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            here
+                          </a>
+                          &thinsp;and the detailed challenge statement on&thinsp;
+                          <a
+                            className="underline"
+                            href="https://www.google.com/url?q=https://drive.google.com/file/d/1YiFLC6L1EBtbgGZUUR0170JtHx8OYGdr/view?usp%3Ddrive_link&sa=D&source=editors&ust=1698775434301441&usg=AOvVaw1qPjfUk1mlDcMsDdNOvtBq"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            GitHub
+                          </a>
+                          <p>
+                            <br />
+                            <br />
+                            *Winners also receive a tour of Plano Fannie Mae Office Facility, lunch
+                            with Executive Leader Thomas Jacob and presenting the winning solutions
+                            to the Leadership Team
+                          </p>
+                        </div>
+                      )}
+                      {props.sponsor == 'EOG Resources' && (
+                        <a
+                          className="underline"
+                          href="https://github.com/nihaal419/HackUTD-X-Golden-Hour"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          here
+                        </a>
+                      )}
                     </p>
                     <div className="hidden sm:flex w-full justify-between mt-10 md:text-base text-sm">
-                      <div className="flex flex-col items-center grow basis-1/3">
+                      <div
+                        className={`flex flex-col items-center grow basis-1/3 ${
+                          props.sponsor == 'Toyota' ? 'mr-5' : ''
+                        }`}
+                      >
                         <div className="2xl:text-xl text-lg font-semibold">1st Place Prize</div>
                         <div>{props.prizes[0]}</div>
-                        <div> &#40;1 per team member&#41;</div>
+                        <div>
+                          {' '}
+                          &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'} per team member&#41;
+                        </div>
                       </div>
                       {props.prizes.length >= 2 && (
                         <div className="flex flex-col items-center grow basis-1/3">
                           <div className="2xl:text-xl text-lg font-semibold">2nd Place Prize</div>
                           <div>{props.prizes[1]}</div>
-                          <div> &#40;1 per team member&#41;</div>
+                          <div>
+                            {' '}
+                            &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'} per team member&#41;
+                          </div>
                         </div>
                       )}
                       {props.prizes.length >= 3 && (
@@ -133,9 +218,15 @@ function HomeChallengeCard(props: challengeProps) {
                     </div>
                     <div className="sm:hidden block mt-8 text-sm">
                       <ul className="leading-snug">
-                        <li>1st: {props.prizes[0]} &#40;1 per team member&#41;</li>
+                        <li>
+                          1st: {props.prizes[0]} &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'}{' '}
+                          per team member&#41;
+                        </li>
                         {props.prizes.length >= 2 && (
-                          <li>2nd: {props.prizes[1]} &#40;1 per team member&#41;</li>
+                          <li>
+                            2nd: {props.prizes[1]} &#40;{props.sponsor == 'Toyota' ? 'Bundle' : '1'}{' '}
+                            per team member&#41;
+                          </li>
                         )}
                         {props.prizes.length >= 3 && (
                           <li>3rd: {props.prizes[2]} &#40;1 per team member&#41;</li>
