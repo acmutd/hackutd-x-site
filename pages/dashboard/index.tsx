@@ -107,6 +107,11 @@ export default function Dashboard(props: {
                 link="https://hackutd.notion.site/Travel-Hackerpack-e4dd9f55947b46a89bd95fd6dd4e08a7?pvs=25"
                 redirect="/hackerpacks/travel"
               />
+              <HackerPackCard
+                name="Challenges/Prizes"
+                link="https://hackutd.notion.site/hackutd/Prizes-Challenge-Statements-9d7aa108ae5d413ab3c92cb4aa88dece"
+                redirect="/hackerpacks/challenges"
+              />
             </div>
           </div>
           {/* Spotlight & Announcements */}

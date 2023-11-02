@@ -34,6 +34,11 @@
       "source": "/hackerpacks",
       "destination": "https://hackutd.notion.site/Hackerpack-39b7dc396a3847749cf25303101022db",
       "statusCode": 301
+    },
+    {
+      "source": "/hackerpacks/challenges",
+      "destination": "https://hackutd.notion.site/hackutd/Prizes-Challenge-Statements-9d7aa108ae5d413ab3c92cb4aa88dece",
+      "statusCode": 301
     }
   ]
 }
