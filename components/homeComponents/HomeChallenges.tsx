@@ -34,9 +34,7 @@ export default function HomeChallenges() {
           <div className="hidden sm:flex w-full justify-between mt-10 md:text-base text-sm">
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">1st Place Prize</div>
-              <div className="text-center">
-                12 month subscription to each: NordVPN, NordPass, Incogni
-              </div>
+              <div className="text-center">Nintendo Switch Lite</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
@@ -52,27 +50,26 @@ export default function HomeChallenges() {
           </div>
           <div className="sm:hidden block mt-8">
             <ul className="leading-snug">
-              <li>
-                1st: 12 month subscription to each: NordVPN, NordPass, Incogni &#40;1 per team
-                member&#41;
-              </li>
+              <li>1st: Nintendo Switch Lite&#41;</li>
               <li>2nd: Apple AirPod Pros &#40;1 per team member&#41;</li>
               <li>3rd: Monitor &#40;1 per team member&#41;</li>
             </ul>
           </div>
           <p className="lg:text-3xl text-2xl text-center font-semibold mt-10 mb-4">Tracks</p>
           <div className="hidden sm:flex w-full justify-between  md:text-base text-sm">
-            <div className="flex flex-col items-center grow">
+            <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Beginner</div>
-              <div>JBL Flip 5</div>
+              <div className="text-center">
+                12 month subscription to each: NordVPN, NordPass, Incogni
+              </div>
               <div> &#40;1 per team member&#41;</div>
             </div>
-            <div className="flex flex-col items-center grow">
+            <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Design</div>
               <div>Wacom Tablet</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
-            <div className="flex flex-col items-center grow">
+            <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Hardware</div>
               <div>Rasberry Pi</div>
               <div> &#40;1 per team member&#41;</div>
@@ -80,7 +77,10 @@ export default function HomeChallenges() {
           </div>
           <div className="sm:hidden block">
             <ul className="leading-snug">
-              <li>Best Beginner: JBL Flip 5 &#40;1 per team member&#41;</li>
+              <li>
+                Best Beginner: 12 month subscription to each: NordVPN, NordPass, Incogni &#40;1 per
+                team member&#41;
+              </li>
               <li>Best Design: Wacom Tablet &#40;1 per team member&#41;</li>
               <li>Best Hardware: Rasberry Pi &#40;1 per team member&#41;</li>
             </ul>
