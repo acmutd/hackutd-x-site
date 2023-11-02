@@ -12,11 +12,12 @@ export default function HomeChallenges() {
         <div className="border-2 border-secondaryDark 2xl:py-12 py-8 2xl:px-32 xl:px-24 md:px-12 px-10">
           <div className="2xl:text-4xl text-3xl text-center font-semibold">Grand Prizes</div>
           <p className="sm:my-6 my-3 xl:text-lg">
-            Every project submitted will be automatically eligible for the grand prize running.
-            However, you can only submit to at most two company challenges but as many tracks as you
-            want. Present your project to the judge for 3-5 minutes about your app, how you built
-            it, your challenges, and a demo. You will present your project to multiple judges one
-            after another, please do not leave after presenting once.
+            Every project submitted will be automatically eligible for the grand prize running. You
+            can submit to as many company challenges and tracks as you want. Present your project to
+            the judge for 3-5 minutes about your app, how you built it, your challenges, and a demo.
+            You will present your project to multiple judges one after another, please do not leave
+            after presenting once. For more information on submission and judging, check out the
+            general hackerpack.
           </p>
           <p className="text-xl font-semibold">Judging Criteria</p>
           <p className="xl:text-lg mt-2">
@@ -127,18 +128,11 @@ commitment to quality, ceaseless innovation, and respect for the planet, we stri
           challengeStatement="State Farm doesn’t just have auto and home insurance, we also have small business insurance. Design a solution to enhance the small business insurance experience with State Farm."
         />
         <HomeChallengeCard
-          sponsor="PRHI"
-          challengeName="PRHI Challenge"
-          prizes={['$250 Amazon Gift Card']}
-          sponsorSummary="The Pittsburgh Regional Health Initiative (PRHI) is one of the nation's first regional collaboratives of medical, business, and civic leaders organized to address healthcare safety and quality improvements. Since its founding in 1998, PRHI has approached quality improvement as both a social and a business imperative. Its core mission is to show that an unwavering focus on meeting patient needs, and on achieving optimal care outcomes, along with simultaneous dedication to efficiency and zero defects, will create maximum value for the patient and for society. One of the newest initiatives under PRHI is the Patient Safety Technology Challenge which is designed to fuel the engagement of innovators in creating solutions to reduce preventable deaths and disabilities from medical errors and harmful events and reimagine a vastly safer healthcare system. The initiative injects patient safety awards into existing competitions to help increase awareness of this crisis and supports budding innovations."
-          challengeStatement="We’re in search of bold new thinking. This is an invitation to solve the problem of medical error that harms millions of U.S. patients, kills approximately 250,000 patients, and costs billions of dollars every year. We’re calling on HackUTD teams to envision the best technology-enabled patient safety solution that has the potential to avert patient harm and save lives. The best team will be awarded $1,000. In order to be eligible to win your hack must align with one of the following five leading patient safety challenges facing health care across the continuum of care: Medication errors, procedural/surgical errors, errors during routine patient care (e.g. pressure ulcers, blood clots, falls), infections and diagnostic safety. Learn more about the problem and get access to resources to help your hack "
-        />
-        <HomeChallengeCard
           sponsor="CBRE"
-          challengeName="AI/ML Powered Real Estate Property Solution"
+          challengeName="AI/ML Powered Real Estate Property Solution Challenge"
           prizes={['$250 Amazon Gift Card', '$150 Amazon Gift Card', '$75 Amazon Gift Card']}
           sponsorSummary="Be part of a global technology team, at a prestigious Fortune 136 company, that’s disrupting the future of commercial real estate. Our tech team (Digital & Technology) sits at the heart of CBRE where engineers across the globe collaborate as ‘One Team’ to produce innovative product solutions leveraging cutting-edge technologies in Cloud powered by AI. As part of our team, you’ll be able to learn from the industry’s most innovative engineers, designers, and product managers, while solving tough problems that will drive our company forward into the future.\n\nCBRE Digital & Technology offers full-time, entry-level positions, in addition to summer internships – right here in Richardson, Texas.\n\nSummer 2024 internship applications are open NOW through November 10th. Link to apply: "
-          challengeStatement="Develop & present an innovative solution leveraging the power of AI & ML to enhance the value proposition and customer experience of real estate properties.\n- To manage & assess the condition of RE Properties\n- Generate narratives\n- Predict Environmental Impacts\n\nRead the full challenge statement and read more information "
+          challengeStatement="Develop & present an innovative solution leveraging the power of AI & ML to enhance the value proposition and customer experience of real estate properties."
         />
         <HomeChallengeCard
           sponsor="EOG Resources"
@@ -166,7 +160,14 @@ commitment to quality, ceaseless innovation, and respect for the planet, we stri
           challengeName="Fannie Mae Challenge"
           prizes={['$125 Amazon Gift Card', '$75 Amazon Gift Card']}
           sponsorSummary="What if your internship exceeded expectations? Working at Fannie Mae means being part of a supportive, inclusive company where you can forge your own path, but you’re never on your own. You’ll find encouragement through mentorship and early career training programs, plus our industry-leading benefits — including a student loan repayment program and lifestyle spending account. Fannie Mae employees help make housing more accessible, equitable, and attainable. It’s a big job that brings people working in technology, analytics, finance, and business together to collaborate on projects that make a real difference for millions of people. Our award-winning internship and early career roles offer the perfect opportunities to realize your full potential. Learn more about our student programs and current openings on our website."
-          challengeStatement="Understanding what it takes to purchase a home has always been challenging. The paperwork can be extremely confusing and dense, and it is hard to figure out if you have the necessary means to complete the purchase. What steps can you take to improve your ability to purchase a home?\n\nIn this challenge we are presenting you with a list of potential homebuyers and some relevant data for each of them. The goal of this challenge is two-fold.\n\n- Evaluate the potential homebuyer data and determine if they are ready to buy a home.\n- If they are not – offer meaningful suggestions about steps that they can take to improve their position.\n\nThe data and decision factors we are presenting here represent a simplified version of the information and how the process works in the real world, however the data represents some of the real-world factors or information used to make home buying eligibility decisions.\n\n"
+          challengeStatement="Understanding what it takes to purchase a home has always been challenging. The paperwork can be extremely confusing and dense, and it is hard to figure out if you have the necessary means to complete the purchase. What steps can you take to improve your ability to purchase a home?\n\nIn this challenge we are presenting you with a list of potential homebuyers and some relevant data for each of them. The goal of this challenge is two-fold."
+        />
+        <HomeChallengeCard
+          sponsor="PRHI"
+          challengeName="PRHI Challenge"
+          prizes={['$250 Amazon Gift Card']}
+          sponsorSummary="The Pittsburgh Regional Health Initiative (PRHI) is one of the nation's first regional collaboratives of medical, business, and civic leaders organized to address healthcare safety and quality improvements. Since its founding in 1998, PRHI has approached quality improvement as both a social and a business imperative. Its core mission is to show that an unwavering focus on meeting patient needs, and on achieving optimal care outcomes, along with simultaneous dedication to efficiency and zero defects, will create maximum value for the patient and for society. One of the newest initiatives under PRHI is the Patient Safety Technology Challenge which is designed to fuel the engagement of innovators in creating solutions to reduce preventable deaths and disabilities from medical errors and harmful events and reimagine a vastly safer healthcare system. The initiative injects patient safety awards into existing competitions to help increase awareness of this crisis and supports budding innovations."
+          challengeStatement="We’re in search of bold new thinking. This is an invitation to solve the problem of medical error that harms millions of U.S. patients, kills approximately 250,000 patients, and costs billions of dollars every year. We’re calling on HackUTD teams to envision the best technology-enabled patient safety solution that has the potential to avert patient harm and save lives. The best team will be awarded $1,000. In order to be eligible to win your hack must align with one of the following five leading patient safety challenges facing health care across the continuum of care: Medication errors, procedural/surgical errors, errors during routine patient care (e.g. pressure ulcers, blood clots, falls), infections and diagnostic safety. Learn more about the problem and get access to resources to help your hack "
         />
       </div>
     </section>

@@ -122,7 +122,9 @@ function HomeChallengeCard(props: challengeProps) {
                         </a>
                       )}
                     </p>
-                    <p className="md:text-xl text-lg font-semibold">{props.challengeName}</p>
+                    <p className="md:text-xl text-lg font-semibold  underline">
+                      {props.challengeName}
+                    </p>
                     <p className="2xl:text-lg md:text-base text-sm mt-2 whitespace-pre-line">
                       {description}
                       {props.sponsor == 'PRHI' && (
@@ -136,17 +138,44 @@ function HomeChallengeCard(props: challengeProps) {
                         </a>
                       )}
                       {props.sponsor == 'CBRE' && (
-                        <a
-                          className="underline"
-                          href="https://drive.google.com/file/d/1ffaJrf-1jczoB0I1CE6cVr-mAaz_ZX4E/view"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          here
-                        </a>
+                        <div>
+                          <ul className="list-disc list-inside">
+                            <li>To manage & assess the condition of RE Properties</li>
+                            <li>Generate narratives</li>
+                            <li>Predict Environmental Impacts</li>
+                          </ul>
+                          <br />
+                          Read the full challenge statement and read more information&thinsp;
+                          <a
+                            className="underline"
+                            href="https://drive.google.com/file/d/1ffaJrf-1jczoB0I1CE6cVr-mAaz_ZX4E/view"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            here
+                          </a>
+                        </div>
                       )}
                       {props.sponsor == 'Fannie Mae' && (
                         <div>
+                          <br />
+                          <ul className="list-disc list-inside">
+                            <li>
+                              Evaluate the potential homebuyer data and determine if they are ready
+                              to buy a home.
+                            </li>
+                            <li>
+                              If they are not – offer meaningful suggestions about steps that they
+                              can take to improve their position.
+                            </li>
+                          </ul>
+                          <br />
+                          The data and decision factors we are presenting here represent a
+                          simplified version of the information and how the process works in the
+                          real world, however the data represents some of the real-world factors or
+                          information used to make home buying eligibility decisions.
+                          <br />
+                          <br />
                           View the dataset&thinsp;
                           <a
                             className="underline"
@@ -159,7 +188,7 @@ function HomeChallengeCard(props: challengeProps) {
                           &thinsp;and the detailed challenge statement on&thinsp;
                           <a
                             className="underline"
-                            href="https://www.google.com/url?q=https://drive.google.com/file/d/1YiFLC6L1EBtbgGZUUR0170JtHx8OYGdr/view?usp%3Ddrive_link&sa=D&source=editors&ust=1698775434301441&usg=AOvVaw1qPjfUk1mlDcMsDdNOvtBq"
+                            href=" https://github.com/FannieMaeOpenSource/hackudt-2023"
                             target="_blank"
                             rel="noreferrer"
                           >
