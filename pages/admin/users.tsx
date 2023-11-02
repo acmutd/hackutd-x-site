@@ -14,6 +14,17 @@ import AllUsersAdminView from '../../components/adminComponents/AllUsersAdminVie
 import { RegistrationState } from '../../lib/util';
 import { Dialog, Transition } from '@headlessui/react';
 
+type FilterCriteria = {
+  hacker: boolean;
+  sponsor: boolean;
+  organizer: boolean;
+  admin: boolean;
+  super_admin: boolean;
+  accepted: boolean;
+  rejected: boolean;
+  waiting: boolean;
+};
+
 /**
  *
  * The User Dashboard of Admin Console. Shows all users that are registered in the system.
@@ -39,7 +50,7 @@ export default function UserPage() {
 
   let timer: NodeJS.Timeout;
 
-  const [filter, setFilter] = useState({
+  const [filter, setFilter] = useState<FilterCriteria>({
     hacker: true,
     sponsor: true,
     organizer: true,
@@ -49,6 +60,24 @@ export default function UserPage() {
     rejected: true,
     waiting: true,
   });
+
+  // Filters users based on a given filter criteria (typically the updated filter criteria)
+  const filterUsersOnCriteria = (
+    users: UserIdentifier[],
+    filterCriteria: FilterCriteria,
+    searchQuery: string,
+  ): UserIdentifier[] => {
+    return users.filter(
+      ({ user, status }) =>
+        filterCriteria[user.permissions[0].toLowerCase()] &&
+        filterCriteria[status.toLowerCase()] &&
+        (searchQuery !== ''
+          ? `${user.firstName.trim()} ${user.lastName.trim()}`
+              .toLowerCase()
+              .indexOf(searchQuery.toLowerCase()) !== -1
+          : true),
+    );
+  };
 
   async function fetchInitData() {
     setLoading(true);
@@ -101,6 +130,7 @@ export default function UserPage() {
         : 'Waiting',
       selected: false,
     }));
+    usersData.sort(() => Math.random() - Math.random());
 
     setUsers(usersData);
     setFilteredUsers([...usersData.filter((user) => user.user.permissions.includes('hacker'))]);
@@ -114,17 +144,6 @@ export default function UserPage() {
   useEffect(() => {
     if (loading) return;
     timer = setTimeout(() => {
-      if (searchQuery !== '') {
-        const newFiltered = users.filter(
-          ({ user }) =>
-            `${user.firstName.trim()} ${user.lastName.trim()}`
-              .toLowerCase()
-              .indexOf(searchQuery.toLowerCase()) !== -1,
-        );
-        setFilteredUsers(newFiltered);
-      } else {
-        setFilteredUsers([...users]);
-      }
       // if user permission is admin, filter to hackers only
       if (user.permissions.includes('admin')) {
         setFilteredUsers([...users.filter((user) => user.user.permissions.includes('hacker'))]);
@@ -135,6 +154,7 @@ export default function UserPage() {
           super_admin: false,
         });
       }
+      setFilteredUsers(filterUsersOnCriteria(users, filter, searchQuery));
     }, 750);
     return () => {
       clearTimeout(timer);
@@ -146,16 +166,8 @@ export default function UserPage() {
       ...filter,
       [name]: !filter[name],
     };
-    const newFilteredUser = users.filter(({ user, status }) => {
-      if (
-        filterCriteria[user.permissions[0].toLowerCase()] & filterCriteria[status.toLowerCase()]
-      ) {
-        return true;
-      }
-      return false;
-    });
 
-    setFilteredUsers(newFilteredUser);
+    setFilteredUsers(filterUsersOnCriteria(users, filterCriteria, searchQuery));
     setFilter(filterCriteria);
   };
 
@@ -212,13 +224,7 @@ export default function UserPage() {
               selected: false,
             })),
           );
-          setFilteredUsers((prev) =>
-            prev.map((user) => ({
-              ...user,
-              selected: false,
-              status: hackerIds.includes(user.id) ? status : user.status,
-            })),
-          );
+          setFilteredUsers(filterUsersOnCriteria(users, filter, searchQuery));
           alert('Hackers update success');
         }
       })
@@ -252,7 +258,7 @@ export default function UserPage() {
     }
   };
 
-  if (!user || !isAuthorized(user))
+  if (!user || !(user.permissions as string[]).includes('super_admin'))
     return (
       <div className="bg-[url('/assets/hero-bg.png')] flex flex-col flex-grow text-2xl text-primary text-center pt-4">
         Unauthorized
@@ -396,6 +402,7 @@ export default function UserPage() {
           />
         ) : (
           <UserAdminView
+            allUsers={users}
             users={filteredUsers}
             currentUserId={currentUser}
             goBack={() => setCurrentUser('')}

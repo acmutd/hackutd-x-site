@@ -86,23 +86,15 @@ export default function ProfilePage({ applicationDecisions }) {
             <p className="text-center text-sm mt-2">{profile.user.group}</p>
           </div>
           <div className="border-y-4 border-primary py-4 md:my-8 my-6 font-secondary space-y-2">
-            {applicationDecisions && (
-              <div className="flex flex-col items-start justify-start gap-y-1">
-                <h1 className="font-bold text-2xl">Application Status</h1>
-                <p className="text-xl  animate-text bg-gradient-to-r from-primaryDark to-primary bg-clip-text text-transparent">
-                  {profile.status}
-                </p>
-              </div>
-            )}
             <div className="flex flex-row w-full">
               <div className="flex flex-col items-start justify-start gap-y-1">
                 <h1 className="font-bold text-xl">Role</h1>
                 <p className="text-lg gold-text-gradient">{user.permissions[0]}</p>
               </div>
-              {/*<div className="flex flex-col items-start justify-start gap-y-1 ml-8">
-                h1 className="font-bold text-xl">Points</h1>
+              <div className="flex flex-col items-start justify-start gap-y-1 ml-8">
+                <h1 className="font-bold text-xl">Points</h1>
                 <p className="text-lg gold-text-gradient font-black mx-auto">{user.points}</p>
-            </div>*/}
+              </div>
             </div>
             <div className="flex flex-col items-start justify-start gap-y-1">
               <h1 className="font-bold text-2xl">Application Status</h1>
@@ -111,15 +103,6 @@ export default function ProfilePage({ applicationDecisions }) {
               </p>
             </div>
           </div>
-          <button
-            type="button"
-            className="py-1 px-7 rounded-lg font-medium hover:bg-[#FFFCF9] bg-primaryDark text-secondary hover:text-primaryDark border-[1px] border-transparent hover:border-primaryDark transition duration-300 ease-in-out"
-            onClick={() => {
-              router.push('/register');
-            }}
-          >
-            Edit Application
-          </button>
         </div>
         {/* Info */}
         <div className="">

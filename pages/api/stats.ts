@@ -9,6 +9,7 @@ initializeApi();
 const db = firestore();
 
 const USERS_COLLECTION = '/registrations';
+const DECISIONS_COLLECTION = '/acceptreject';
 const SCANTYPES_COLLECTION = '/scan-types';
 
 async function getCheckInEventName() {
@@ -20,7 +21,7 @@ async function getCheckInEventName() {
   return checkInEventName;
 }
 
-async function getStatsData() {
+async function getStatsData(userId: string) {
   const checkInEventName = await getCheckInEventName();
   // const swagData: Record<string, number> = {};
   const statRecords: any = {};
@@ -33,6 +34,9 @@ async function getStatsData() {
     checkedInCount: 0,
     hackerCount: 0,
     adminCount: 0,
+    rejectedCount: 0,
+    acceptedCount: 0,
+    reviewedCount: 0,
     scans: {},
     timestamp: {},
     group: {},
@@ -60,7 +64,7 @@ async function getStatsData() {
       if (!userData[arrayField]) continue;
       userData[arrayField].forEach((data: string) => {
         if (arrayField === 'scans' && data === checkInEventName) generalStats.checkedInCount++;
-        else {
+        else if (generalStats[arrayField]) {
           if (!generalStats[arrayField].hasOwnProperty(data)) generalStats[arrayField][data] = 0;
           generalStats[arrayField][data]++;
         }
@@ -93,13 +97,25 @@ async function getStatsData() {
     }
   });
 
+  const decisionsSnapshot = await db.collection(DECISIONS_COLLECTION).get();
+  decisionsSnapshot.forEach((doc) => {
+    const data = doc.data();
+    const decision = data.status ?? '';
+    const whoReviewed = data.adminId ?? '';
+    if (decision) generalStats[`${decision.toLowerCase()}Count`] += 1;
+    if (whoReviewed === userId) generalStats.reviewedCount += 1;
+  });
+
   return generalStats;
 }
 
 async function handleGetRequest(req: NextApiRequest, res: NextApiResponse) {
-  const { headers } = req;
+  const {
+    headers,
+    query: { id },
+  } = req;
   const userToken = headers['authorization'];
-  const isAuthorized = await userIsAuthorized(userToken, ['super_admin']);
+  const isAuthorized = await userIsAuthorized(userToken, ['super_admin', 'admin']);
 
   if (!isAuthorized) {
     return res.status(403).json({
@@ -108,7 +124,7 @@ async function handleGetRequest(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // Start getting data here
-  const statsData = await getStatsData();
+  const statsData = await getStatsData(id as string);
   return res.json(statsData);
 }
 

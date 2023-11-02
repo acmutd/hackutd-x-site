@@ -43,7 +43,7 @@ export default function HomeSponsors() {
         <a
           href={'https://leap.fidelitycareers.com'}
           target="_blank"
-          className="relative w-[22rem] h-20 "
+          className="relative w-[22rem] h-20"
           rel="noreferrer"
         >
           <Image
@@ -62,6 +62,19 @@ export default function HomeSponsors() {
           <Image
             src={'/assets/sponsorLogos/StateFarm.png'}
             alt="StateFarm"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
+          href={'https://www.eogresources.com/culture/'}
+          target="_blank"
+          className="relative w-40 h-48"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/EOGResources.png'}
+            alt="EOGResources"
             layout="fill"
             objectFit="contain"
           />
@@ -147,6 +160,19 @@ export default function HomeSponsors() {
           />
         </a>
         <a
+          href={'http://axxess.com/'}
+          target="_blank"
+          className="relative w-72  h-32"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/Axxess.jpg'}
+            alt="Axxess"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
           href={'https://www.corelogic.com/culture/'}
           target="_blank"
           className="relative w-[24rem] h-20"
@@ -201,6 +227,45 @@ export default function HomeSponsors() {
           <Image
             src={'/assets/sponsorLogos/mule.svg'}
             alt="StickerMule"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
+          href={'https://nordvpn.com/'}
+          target="_blank"
+          className="relative w-48 h-48"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/NordVPN.png'}
+            alt="NordVPN"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
+          href={'https://nordpass.com/'}
+          target="_blank"
+          className="relative w-48 h-48"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/NordPass.png'}
+            alt="NordPass"
+            layout="fill"
+            objectFit="contain"
+          />
+        </a>
+        <a
+          href={'https://incogni.com/'}
+          target="_blank"
+          className="relative w-64  h-32"
+          rel="noreferrer"
+        >
+          <Image
+            src={'/assets/sponsorLogos/Incogni.png'}
+            alt="Incogni"
             layout="fill"
             objectFit="contain"
           />
