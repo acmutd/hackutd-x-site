@@ -127,6 +127,23 @@ function HomeChallengeCard(props: challengeProps) {
                     </p>
                     <p className="2xl:text-lg md:text-base text-sm mt-2 whitespace-pre-line">
                       {description}
+                      {props.sponsor == 'Frontier' && (
+                        <div>
+                          View detailed description of challenge statements&thinsp;
+                          <a
+                            className="underline"
+                            href="https://github.com/FYBRLabs/Hackathon2023/wiki"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            here.
+                          </a>
+                          <br />
+                          <br />
+                          *1st, 2nd, and 3rd place will be chosen for each of the software and
+                          hardware tracks (a total of 6 teams will be awarded)
+                        </div>
+                      )}
                       {props.sponsor == 'PRHI' && (
                         <a
                           className="underline"

@@ -35,25 +35,25 @@ export default function HomeChallenges() {
           <div className="hidden sm:flex w-full justify-between mt-10 md:text-base text-sm">
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">1st Place Prize</div>
-              <div className="text-center">Nintendo Switch Lite</div>
+              <div className="text-center">LG 4k Smart TV</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">2nd Place Prize</div>
-              <div>Apple AirPod Pros</div>
+              <div>Airpod Pros 2nd Gen</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">3rd Place Prize</div>
-              <div>Monitor</div>
+              <div>Dell Gaming Monitor</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
           </div>
           <div className="sm:hidden block mt-8">
             <ul className="leading-snug">
-              <li>1st: Nintendo Switch Lite&#41;</li>
-              <li>2nd: Apple AirPod Pros &#40;1 per team member&#41;</li>
-              <li>3rd: Monitor &#40;1 per team member&#41;</li>
+              <li>1st: LG 4k Smart TV &#40;1 per team member&#41;</li>
+              <li>2nd: Airpod Pros 2nd Gen &#40;1 per team member&#41;</li>
+              <li>3rd: Dell Gaming Monitor &#40;1 per team member&#41;</li>
             </ul>
           </div>
           <p className="lg:text-3xl text-2xl text-center font-semibold mt-10 mb-4">Tracks</p>
@@ -67,12 +67,12 @@ export default function HomeChallenges() {
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Design</div>
-              <div>Wacom Tablet</div>
+              <div>FijiFilm Mini 7 Polaroid Camera</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Hardware</div>
-              <div>Rasberry Pi</div>
+              <div>JBL Flip 5</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
           </div>
@@ -82,8 +82,8 @@ export default function HomeChallenges() {
                 Best Beginner: 12 month subscription to each: NordVPN, NordPass, Incogni &#40;1 per
                 team member&#41;
               </li>
-              <li>Best Design: Wacom Tablet &#40;1 per team member&#41;</li>
-              <li>Best Hardware: Rasberry Pi &#40;1 per team member&#41;</li>
+              <li>Best Design: FijiFilm Mini 7 Polaroid Camera &#40;1 per team member&#41;</li>
+              <li>Best Hardware: JBL Flip 5 &#40;1 per team member&#41;</li>
             </ul>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function HomeChallenges() {
       <div className="flex flex-wrap justify-between">
         <HomeChallengeCard
           sponsor="Goldman Sachs"
-          challengeName="AI based Algorithmic Earnings Forecasting"
+          challengeName="AI based Algorithmic Earnings Forecasting Challenge"
           prizes={['Apple AirPods Max', 'Apple TV', 'Gift Cards']}
           sponsorSummary="At Goldman Sachs, our engineers don't just make things - we make things possible. Build innovations that drive our business and financial markets worldwide. Solve the most challenging and pressing engineering problems for our clients. Join our engineering teams that build massively scalable software and systems, architect low latency infrastructure solutions, proactively guard against cyber threats, and leverage machine learning alongside financial engineering to continuously turn data into action. Stop by our booth during the hackathon to learn more!"
           challengeStatement="Develop an AI application combining outputs of open source generative AI models and openly available market and economic data that predicts company earnings and financial performance using alternative data sources, like news sentiment and social media trends.\n\nTechnology Trends: GenAI, Natural language processing, sentiment analysis, and machine learning for financial forecasting."
@@ -153,7 +153,7 @@ commitment to quality, ceaseless innovation, and respect for the planet, we stri
             '$50 Amazon Gift Card',
           ]}
           sponsorSummary="At Frontier, we believe in the power of technology to change lives. As the largest pure-play fiber provider in the U.S., we deliver blazing-fast broadband connectivity that unlocks the potential of millions of consumers and businesses. Everything we do comes down to our purpose: Building Gigabit America. These three words capture the unique value of what we do, the product and innovation we’re bringing, and the scale of our ambition. Working at Frontier will inspire you to expand your thinking beyond the typical early career or internship. This is your opportunity to lead and innovate in a transformative environment. We offer opportunities across our business where you can approach work with an entrepreneurial mindset—think a “start-up” within a large company. If want the opportunity to shape the future, Frontier is the place for you. Come Build Gigabit America with us! "
-          challengeStatement="Software:\nAt Frontier, our customers depend on us to deliver blazing-fast, reliable internet.We’re looking for ways to solve connectivity problems before our customers even know they have them. Your challenge is to help us predict when a customer may be having a bad experience and call us or need us to visit them for a support call. This will include using AI and applying data from our network, along with any other data you think is valuable.\n\nHardware:\nAt Frontier, we are committed to sustainability in our technology. That means our equipment must work in all kinds of environments and situations. Your challenge is to help us design an enclosure that keeps our equipment cool during hot Texas summers. The best design will be inexpensive, self-powered, and have few moving parts. Your design can be built with real materials or in the CAD software of your choosing.\n\n*1st, 2nd, and 3rd place will be chosen for each of the software and hardware tracks (a total of 6 teams will be awarded)"
+          challengeStatement="**Software:**\nOur customers depend on us to deliver blazing-fast, reliable internet. We’re looking for ways to solve connectivity problems before our customers even know they have them.\n\nYour challenge is to help us predict when a customer may be having a bad experience and call us or need us to visit them for a support call.\n\nThis will include using AI and applying data from our network, along with any other data you think is valuable.\n\n**Hardware:**\nWe are committed to sustainability in our technology. That means our equipment must work in all kinds of environments and situations.\n\nYour challenge is to help us design an enclosure that keeps our equipment cool during hot Texas summers.\n\nThe best design will be inexpensive, self-powered, and have few moving parts. Your design can be built with real materials or in the CAD software of your choosing.\n\n"
         />
         <HomeChallengeCard
           sponsor="Fannie Mae"
