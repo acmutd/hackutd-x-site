@@ -45,7 +45,7 @@ export default function HomeChallenges() {
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">3rd Place Prize</div>
-              <div>Dell Gaming Monitor</div>
+              <div>Samsung Gaming Monitor</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function HomeChallenges() {
             <ul className="leading-snug">
               <li>1st: LG 4k Smart TV &#40;1 per team member&#41;</li>
               <li>2nd: Airpod Pros 2nd Gen &#40;1 per team member&#41;</li>
-              <li>3rd: Dell Gaming Monitor &#40;1 per team member&#41;</li>
+              <li>3rd: Samsung Gaming Monitor &#40;1 per team member&#41;</li>
             </ul>
           </div>
           <p className="lg:text-3xl text-2xl text-center font-semibold mt-10 mb-4">Tracks</p>
@@ -72,7 +72,7 @@ export default function HomeChallenges() {
             </div>
             <div className="flex flex-col items-center grow basis-1/3">
               <div className="md:text-xl text-lg font-semibold">Best Hardware</div>
-              <div>JBL Flip 5</div>
+              <div>JBL Flip 6</div>
               <div> &#40;1 per team member&#41;</div>
             </div>
           </div>
@@ -83,7 +83,7 @@ export default function HomeChallenges() {
                 team member&#41;
               </li>
               <li>Best Design: FijiFilm Mini 7 Polaroid Camera &#40;1 per team member&#41;</li>
-              <li>Best Hardware: JBL Flip 5 &#40;1 per team member&#41;</li>
+              <li>Best Hardware: JBL Flip 6 &#40;1 per team member&#41;</li>
             </ul>
           </div>
         </div>
