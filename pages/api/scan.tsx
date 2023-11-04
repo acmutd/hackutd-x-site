@@ -99,9 +99,10 @@ async function handleScan(req: NextApiRequest, res: NextApiResponse) {
     const snapshot = await db.collection(REGISTRATION_COLLECTION).doc(bodyData.id).get();
     if (!snapshot.exists)
       return res.status(404).json({ code: 'not found', message: "User doesn't exist..." });
+    const scanIsCheckInEvent = await checkIfScanIsCheckIn(bodyData.scan);
     if (override !== 'true') {
       const userIsRejected = await checkIfUserIsRejected(snapshot.data().id);
-      if (userIsRejected) {
+      if (userIsRejected && scanIsCheckInEvent) {
         return res.status(403).json({
           code: 'rejected-user',
           message: 'User is rejected',
@@ -111,7 +112,6 @@ async function handleScan(req: NextApiRequest, res: NextApiResponse) {
     let scans = snapshot.data().scans ?? [];
 
     const userCheckedIn = await userAlreadyCheckedIn(scans);
-    const scanIsCheckInEvent = await checkIfScanIsCheckIn(bodyData.scan);
 
     if (!userCheckedIn && !scanIsCheckInEvent) {
       scans.push(ILLEGAL_SCAN_NAME);
