@@ -56,6 +56,10 @@ export default function HomeChallenges() {
               <li>3rd: Samsung Gaming Monitor &#40;1 per team member&#41;</li>
             </ul>
           </div>
+          <div className="mt-5">
+            Note: 1st place winners can pick any prize, 2nd place gets to pick one out of the
+            remaining prizes, and 3rd place gets the remaining prize.
+          </div>
           <p className="lg:text-3xl text-2xl text-center font-semibold mt-10 mb-4">Tracks</p>
           <div className="hidden sm:flex w-full justify-between  md:text-base text-sm">
             <div className="flex flex-col items-center grow basis-1/3">
