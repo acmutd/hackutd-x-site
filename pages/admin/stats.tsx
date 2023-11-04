@@ -18,9 +18,7 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 
 function isAuthorized(user): boolean {
   if (!user || !user.permissions) return false;
-  return (
-    (user.permissions as string[]).includes('super_admin')
-  );
+  return (user.permissions as string[]).includes('super_admin');
 }
 
 export default function AdminStatsPage() {

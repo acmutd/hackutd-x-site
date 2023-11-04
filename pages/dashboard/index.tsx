@@ -5,7 +5,6 @@ import DashboardHeader from '../../components/dashboardComponents/DashboardHeade
 import { useUser } from '../../lib/profile/user-data';
 import { useAuthContext } from '../../lib/user/AuthContext';
 import AnnouncementCard from '../../components/dashboardComponents/AnnouncementCards';
-import Sidebar from '../../components/dashboardComponents/Sidebar';
 import firebase from 'firebase';
 import 'firebase/messaging';
 import { GetServerSideProps } from 'next';
@@ -88,7 +87,7 @@ export default function Dashboard(props: {
         <section id="mainContent" className="2xl:px-32 md:px-16 px-6 w-full">
           <DashboardHeader />
           {/* HackerPack Section */}
-          <div className="hoefler-text lg:mt-28 mt-20 mb-16">
+          <div className="hoefler-text mt-12 mb-16">
             <h1 className="xl:text-5xl lg:text-4xl text-3xl font-black text-[#FFFCF9]">
               HackerPacks
             </h1>
@@ -98,11 +97,20 @@ export default function Dashboard(props: {
               information.
             </div>
             <div className="grid 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
-              <HackerPackCard name="General" link="https://hackutd.notion.site/Hackerpack-39b7dc396a3847749cf25303101022db" redirect="/hackerpacks/general" />
+              <HackerPackCard
+                name="General"
+                link="https://hackutd.notion.site/Hackerpack-39b7dc396a3847749cf25303101022db"
+                redirect="/hackerpacks/general"
+              />
               <HackerPackCard
                 name="Travel"
                 link="https://hackutd.notion.site/Travel-Hackerpack-e4dd9f55947b46a89bd95fd6dd4e08a7?pvs=25"
                 redirect="/hackerpacks/travel"
+              />
+              <HackerPackCard
+                name="Challenges/Prizes"
+                link="https://hackutd.notion.site/hackutd/Prizes-Challenge-Statements-9d7aa108ae5d413ab3c92cb4aa88dece"
+                redirect="/hackerpacks/challenges"
               />
             </div>
           </div>

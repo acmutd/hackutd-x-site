@@ -73,7 +73,7 @@ export default function FaqDisclosure({
             }`}
             static
           >
-            <div className="lg:w-[130%] lg:-translate-x-[12%] md:w-[140%] md:-translate-x-[15%] w-[140%] -translate-x-[15%] md:mb-4 mb-2 md:text-base sm:text-sm text-xs">
+            <div className="lg:w-[130%] lg:-translate-x-[12%] md:w-[140%] md:-translate-x-[15%] w-[140%] -translate-x-[15%] md:mb-4 mb-2 md:text-lg sm:text-base text-sm hoefler-text">
               {answer}
             </div>
           </Disclosure.Panel>
