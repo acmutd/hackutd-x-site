@@ -120,6 +120,7 @@ function CalendarGrid({
           return (
             e.track === event.track &&
             new Date(e.startDate) <= startDate &&
+            startDate <= new Date(e.endDate) &&
             startDate <= startPlusOneHour
           );
         }).length;
@@ -132,8 +133,9 @@ function CalendarGrid({
           startPlusOneHour.setHours(startPlusOneHour.getHours() + 1);
           return (
             e.track === event.track &&
-            startDate < new Date(e.startDate) &&
-            new Date(e.startDate) < startPlusOneHour
+            startDate <= new Date(e.startDate) &&
+            new Date(e.startDate) <= endDate  &&
+            new Date(e.startDate) <= startPlusOneHour
           );
         }).length;
         const marginPerTextOverlapRight = '10%';
@@ -157,7 +159,7 @@ function CalendarGrid({
                 marginRight: marginRight,
               } as CSSProperties
             }
-            className="rounded-md p-2 z-[9] shadow"
+            className="rounded-md p-2 z-[9] shadow overflow-auto"
             onClick={() => onEventClick(event)}
           >
             <div>{event.title}</div>
@@ -294,7 +296,7 @@ function CalendarGrid({
         className="w-full overflow-x-auto overflow-y-hidden grid gap-0 auto-cols-[minmax(220px,1fr)] grid-cols-[max-content] font-secondary"
         style={
           {
-            gridTemplateRows: `repeat(${minutesInDay - startMin + increment}, 2px)`,
+            gridTemplateRows: `repeat(${minutesInDay - startMin + increment}, 2.6px)`,
           } as CSSProperties
         }
       >
