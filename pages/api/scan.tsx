@@ -124,7 +124,7 @@ async function handleScan(req: NextApiRequest, res: NextApiResponse) {
 
     if (scans.includes(bodyData.scan) && !bodyData.isReclaimable)
       return res.status(201).json({ code: 'duplicate' });
-    const points = (snapshot.data().user.points ?? 0) + bodyData.netPoints;
+    const points = (snapshot.data().user.points ?? 0)// + bodyData.netPoints;
     if (!bodyData.isReclaimable) scans.push(bodyData.scan);
     if (points < 0)
       return res.status(418).json({
