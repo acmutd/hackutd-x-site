@@ -258,7 +258,7 @@ export default function UserPage() {
     }
   };
 
-  if (!user || !(user.permissions as string[]).includes('super_admin'))
+  if (!user || !((user.permissions as string[]).includes('super_admin') && (user.permissions as string[]).includes("admin")))
     return (
       <div className="bg-[url('/assets/hero-bg.png')] flex flex-col flex-grow text-2xl text-primary text-center pt-4">
         Unauthorized

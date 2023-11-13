@@ -41,6 +41,7 @@ export default function UserAdminView({
   const { user: organizer } = useAuthContext();
 
   const user_info = [
+    ["Email", currentUser.user.preferredEmail],
     ['Major', currentUser.major],
     ['University', currentUser.university],
     ['Current Level of Study', currentUser.studyLevel],
