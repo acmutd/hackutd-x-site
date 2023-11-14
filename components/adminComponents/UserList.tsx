@@ -39,7 +39,8 @@ export default function UserList({
           Major
           Year
         */}
-        {organizer.permissions[0] === 'super_admin' && (
+        {(organizer.permissions.includes('super_admin') ||
+          organizer.permissions.includes('admin')) && (
           <div
             className={`flex w-1/2 md:w-2/12 h-full py-3 pr-6 items-center text-white text-base`}
             onClick={(e) => {
@@ -73,8 +74,14 @@ export default function UserList({
           <span
             className={` py-1 px-6 rounded-md ${
               user.status === 'Accepted' ? 'text-[#409019] bg-[#84DF58]/25' : ''
-            } ${user.status === 'Rejected' ? 'text-[#872852] bg-[#EA609C]/25' : ''}
-                  ${user.status === 'Waiting' ? 'text-[#F59E0B] bg-[#FDE68A]/25' : ''}`}
+            } ${
+              user.status === 'Rejected' ? 'text-[#872852] bg-[#EA609C]/25' : ''
+            }
+                  ${
+                    user.status === 'Waiting'
+                      ? 'text-[#F59E0B] bg-[#FDE68A]/25'
+                      : ''
+                  }`}
           >
             {user.status}
           </span>
@@ -88,7 +95,7 @@ export default function UserList({
         <div className="hidden md:block text-base text-white w-2/12 h-full py-3 pr-6 whitespace-nowrap overflow-hidden text-ellipsis max-w-[100%]">
           {user.studyLevel}
         </div>
-      </div>,
+      </div>
     );
   });
 

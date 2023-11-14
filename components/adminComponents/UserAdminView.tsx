@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { RequestHelper } from '../../lib/request-helper';
 import Pagination from './UserAdminPagination';
 import { useAuthContext } from '../../lib/user/AuthContext';
-import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, XIcon } from '@heroicons/react/solid';
+import {
+  CheckIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  XIcon,
+} from '@heroicons/react/solid';
 import Link from 'next/link';
 
 interface UserAdminViewProps {
@@ -41,7 +46,7 @@ export default function UserAdminView({
   const { user: organizer } = useAuthContext();
 
   const user_info = [
-    ["Email", currentUser.user.preferredEmail],
+    ['Email', currentUser.user.preferredEmail],
     ['Major', currentUser.major],
     ['University', currentUser.university],
     ['Current Level of Study', currentUser.studyLevel],
@@ -54,11 +59,20 @@ export default function UserAdminView({
       'Resume',
       currentUser.resume === '' ||
       currentUser.resume === undefined ||
-      organizer.permissions[0] !== 'super_admin' ? (
+      (!organizer.permissions.includes('super_admin') &&
+        !organizer.permissions.includes('admin')) ? (
         'No resume found'
       ) : (
-        <Link passHref href={currentUser.resume} className="border-2 p-3 hover:bg-gray-200">
-          <a target="_blank" rel="noopener noreferrer" className="hover:underline">
+        <Link
+          passHref
+          href={currentUser.resume}
+          className="border-2 p-3 hover:bg-gray-200"
+        >
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
             Click here to download resume
           </a>
         </Link>
@@ -116,7 +130,7 @@ export default function UserAdminView({
         {
           userId: currentUser.id,
           newRole,
-        },
+        }
       );
       if (!status || data.statusCode >= 400) {
         setErrors([...errors, data.msg]);
@@ -126,7 +140,10 @@ export default function UserAdminView({
       }
     } catch (error) {
       console.error(error);
-      setErrors((prev) => [...prev, 'Unexpected error. Please try again later']);
+      setErrors((prev) => [
+        ...prev,
+        'Unexpected error. Please try again later',
+      ]);
     }
     // TODO: Make request to backend to update user roles
   };
@@ -161,9 +178,19 @@ export default function UserAdminView({
               )}
               <div
                 className={`py-0.6 px-6 rounded-md  ${
-                  user.status === 'Accepted' ? 'text-[#409019] bg-[#84DF58]/25' : ''
-                } ${user.status === 'Rejected' ? 'text-[#872852] bg-[#EA609C]/25' : ''}
-                  ${user.status === 'Waiting' ? 'text-[#F59E0B] bg-[#FDE68A]/25' : ''}
+                  user.status === 'Accepted'
+                    ? 'text-[#409019] bg-[#84DF58]/25'
+                    : ''
+                } ${
+                  user.status === 'Rejected'
+                    ? 'text-[#872852] bg-[#EA609C]/25'
+                    : ''
+                }
+                  ${
+                    user.status === 'Waiting'
+                      ? 'text-[#F59E0B] bg-[#FDE68A]/25'
+                      : ''
+                  }
                   `}
               >
                 {user.status}
@@ -210,13 +237,25 @@ export default function UserAdminView({
           {/* User Status */}
           <div className="mt-4">
             <div>
-              <h3 className="font-bold text-lg text-primary">Application Status</h3>
+              <h3 className="font-bold text-lg text-primary">
+                Application Status
+              </h3>
               <div className="mt-4 flex flex-col lg:flex-row justify-between items-start">
                 <p
                   className={`text-lg font-bold py-1 px-6 rounded-md ${
-                    currentUser.status === 'Accepted' ? 'text-[#409019] bg-[#84DF58]/25' : ''
-                  } ${currentUser.status === 'Rejected' ? 'text-[#872852] bg-[#EA609C]/25' : ''}
-                  ${currentUser.status === 'Waiting' ? 'text-[#F59E0B] bg-[#FDE68A]/25' : ''}
+                    currentUser.status === 'Accepted'
+                      ? 'text-[#409019] bg-[#84DF58]/25'
+                      : ''
+                  } ${
+                    currentUser.status === 'Rejected'
+                      ? 'text-[#872852] bg-[#EA609C]/25'
+                      : ''
+                  }
+                  ${
+                    currentUser.status === 'Waiting'
+                      ? 'text-[#F59E0B] bg-[#FDE68A]/25'
+                      : ''
+                  }
                   `}
                 >
                   {currentUser.status}
@@ -265,7 +304,9 @@ export default function UserAdminView({
                       </select>
                     </div>
                   ) : (
-                    <p className="text-secondary">{currentUser.user.permissions[0]}</p>
+                    <p className="text-secondary">
+                      {currentUser.user.permissions[0]}
+                    </p>
                   )}
                 </div>
               </div>
